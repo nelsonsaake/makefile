@@ -1,4 +1,4 @@
-.PHONY: gen apk web win ncommit pull ico
+.PHONY: gen apk web win ncommit pull ico commit  iclean ireset isims ipa pull splash
 
 gen:
 	flutter pub run build_runner build --delete-conflicting-outputs
@@ -25,3 +25,26 @@ pull:
 ico:
 	flutter pub get
 	flutter pub run flutter_launcher_icons
+
+commit:
+	git add .
+	git commit -m "ncommit"
+	git push origin main
+
+iclean:
+	flutter clean
+	xcrun simctl shutdown all && xcrun simctl erase all
+
+ireset:
+	flutter clean
+	xcrun simctl shutdown all && xcrun simctl erase all
+	flutter pub get
+
+isims:
+	xcrun simctl list devices
+
+ipa:
+	flutter build ipa
+
+splash:
+	dart run flutter_native_splash:create
