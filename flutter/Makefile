@@ -48,3 +48,14 @@ ipa:
 
 splash:
 	dart run flutter_native_splash:create
+
+ofb:
+	npm install -g firebase-tools
+	firebase login
+	firebase init hosting
+	flutter build web
+
+pfd:
+	flutter pub add pdf 
+	flutter pub add pdfx 
+	flutter pub run pdfx:install_web
